@@ -10,6 +10,19 @@ app.get("/", (req, res) => {
   res.send(`Server is running on port ${PORT}`);
 });
 
+class Product {
+  constructor(id, { name, description, price, soldout, stores }) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.soldout = soldout;
+    this.stores = stores;
+  }
+}
+
+const productDatabase = {};
+
 const root = {
   product: () => {
     return {
@@ -18,7 +31,13 @@ const root = {
       description: "This is a piece of cheese",
       price: 2.5,
       soldout: false,
+      stores: [{ store: "Walmart" }, { store: "Costco" }],
     };
+  },
+  createProduct: ({ input }) => {
+    let id = require("crypto").randomBytes(10).toString("hex");
+    productDatabase[id] = input;
+    return new Product(id, input);
   },
 };
 
