@@ -11,7 +11,15 @@ app.get("/", (req, res) => {
 });
 
 const root = {
-  hello: () => "Hello World",
+  product: () => {
+    return {
+      id: 1,
+      name: "Cheese",
+      description: "This is a piece of cheese",
+      price: 2.5,
+      soldout: false,
+    };
+  },
 };
 
 app.use(
