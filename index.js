@@ -3,7 +3,7 @@ import { graphqlHTTP } from "express-graphql";
 import schema from "./data/schema";
 import resolvers from "./data/resolvers";
 
-const PORT = 8080;
+const PORT = 8081;
 
 const app = express();
 
