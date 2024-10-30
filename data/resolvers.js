@@ -43,6 +43,15 @@ const resolvers = {
       throw new Error(error);
     }
   },
+
+  deleteProduct: async ({ id }) => {
+    try {
+      await Widgets.deleteOne({ _id: id });
+      return "Product deleted";
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
 };
 
 export default resolvers;
